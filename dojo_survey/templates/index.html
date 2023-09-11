@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Form</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Dojo Survey</h1>
+        <form method="POST" action="{{ url_for('form') }}">
+            <div class="n_group">
+                <label for="name">Name:</label>
+                <input type="text"  id="name" name="name" >
+            </div>
+            <div class="e_group">
+                <label for="email">Email address:</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="m_group">
+                <label for="message">Message:</label>
+                <textarea  id="message" name="message"></textarea>
+            </div>
+            <div class="s_group">
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>

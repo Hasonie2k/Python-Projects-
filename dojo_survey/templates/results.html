@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style2.css') }}">
+</head>
+<body>
+    <div class="container2">
+        <p id="info1">Name: {{ name }}</p>
+        <p id="info2">Email: {{ email }}</p>
+        <p id="info3">Message: {{ message }}</p>
+        <form action="/reset" method="post" id="resetbtn">
+            <button type="submit" class="btn2">Reset</button>
+        </form>
+    </div>
+</body>
+</html>

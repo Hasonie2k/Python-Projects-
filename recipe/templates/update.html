@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='update.css') }}">
+    <title> edit recipe </title>
+</head>
+<body>
+    {% with messages = get_flashed_messages() %}
+    {% if  messages %}
+    {% for message in messages %}          
+    <p>{{message}}</p>                 
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+    <h1> edit  Recipe</h1>
+    <a href="{{ url_for('hello') }}">back to menu</a>
+    <div>
+        <form action="{{ url_for('update_recipe', users_id=recipe.users_id) }}" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" value="{{ recipe.name }}" required>
+            <br>
+            <label>Description:</label>
+            <textarea name="description" required>{{ recipe.description }}</textarea>
+            <br>
+            <label>Instruction:</label>
+            <textarea name="instruction" required>{{ recipe.instruction }}</textarea>
+            <br>
+            <label>Date Cooked:</label>
+            <input type="date" name="date_cooked" value="{{ recipe.date_cooked }}" required>
+            <br>
+            <label>under 30 minutes?</label><br>
+            <input type="radio" id="yes" name="under" value="yes">
+            <label for="yes">Yes</label>
+            <input type="radio" id="no" name="under" value="no">
+            <label for="no">No</label>
+            <br>
+            <input type="submit" value="Update Recipe">
+        </form>
+    </div>
+</body>
+</html>

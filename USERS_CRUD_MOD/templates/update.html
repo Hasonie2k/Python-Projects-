@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styleU.css') }}">
+    <title>Document</title>
+</head>
+<body>
+<div class="update-table">
+    <h1>Update User</h1>
+	<form action="/update" method="POST">
+        <label for="id">Id:</label>
+		<input type="text" name="id" value="{{ user[0] }}">
+		<label for="first_name">First Name:</label>
+		<input type="text" name="first_name" id="first_name" value="{{ user[1] }}">
+		<label for="last_name">Last Name:</label>
+		<input type="text" name="last_name" id="last_name" value="{{ user[2] }}">
+		<label for="email">Email:</label>
+		<input type="email" name="email" id="email" value="{{ user[3] }}">
+		<button type="submit">Update User</button>
+        <button type="submit">delete user</button>
+        <a href="/update"></a>
+        <button><a href="/"></a>home</button>
+	</form>
+</div>
+</body>
+</html>

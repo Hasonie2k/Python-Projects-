@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<style>
+
+body
+    {
+    width:100%;
+    height: auto;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    }
+.box-container
+    {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    }
+.box
+    {
+    margin: 10px 10px;
+    background-color: {{ box_color }};
+    height : 150px;
+    width : 150px;
+    border-radius : 15px;
+    border : solid black 2px;
+    }
+</style>
+</head>
+<body>
+<div class="box-container">
+    {% for i in range(number) %}
+    <div class="box"></div>
+    {% endfor %}
+</div>
+</body>
+</html>

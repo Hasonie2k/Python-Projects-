@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='view.css') }}">
+    <title>view recipe</title>
+</head>
+<body>
+    {% if user %}
+    <p>posted by:{{user.first_name}}</p>
+    {% endif %}
+    <table>
+        <tr>
+            <th>Name</th>
+            <td>{{ recipe.name }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ recipe.description }}</td>
+        </tr>
+        <tr>
+            <th>Instruction</th>
+            <td>{{ recipe.instruction }}</td>
+        </tr>
+        <tr>
+            <th>Date Cooked</th>
+            <td>{{ recipe.date_cooked }}</td>
+        </tr>
+        <tr>
+            <th>under 30 minutes</th>
+            <td>{{ recipe.under }}</td>
+        </tr>
+    </table>
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <a href="{{url_for('hello')}}">Back to menu</a>
+</body>
+</html>

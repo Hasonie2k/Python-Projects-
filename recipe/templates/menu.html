@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='menu.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    {% if user %}
+    <p>hello {{user.first_name}}</p>
+    {% endif %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+    <a href="{{ url_for('create') }}">add recipe</a>
+    
+    <div>
+        <table>
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>description</th>
+                    <th>under 30 minutes?</th>
+                    <th>View recipe</th>
+                    <th>actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for recipe in recipes %}
+                <tr>
+                    <td>{{ recipe.name }}</td>
+                    <td>{{ recipe.description }}</td>
+                    <td>{{ recipe.under }}</td>
+                    <td><a href="{{ url_for('view', name=recipe.name) }}">details</a></td>
+                    <td>
+                    {% if recipe.users_id == users_id %}
+                    <form method="POST" action="{{ url_for('delete_recipe', users_id=recipe.users_id) }}">
+                        <button type="submit" class="btn-danger">Delete Recipe</button>
+                    </form>
+                    <a href="{{ url_for('update', users_id=recipe.users_id) }}">edit recipe</a>
+                    {% endif %}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

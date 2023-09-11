@@ -1,0 +1,17 @@
+table{
+    width:50%;
+    height:250px;
+    background-color: rgb(23, 51, 83);
+    color: azure;
+    font-size: 1.3em;
+    border: 3px solid black;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+th{
+    background-color: rgb(9, 5, 14);
+    border-radius: 15px;
+    height: 55px;
+}
