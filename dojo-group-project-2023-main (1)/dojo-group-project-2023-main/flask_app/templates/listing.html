@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/listing.css') }}">
+    <title>Listings</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header">
+                <div class="h1">
+                    <h1>{{listing.make_model}}</h1>
+                </div>
+                <div class="header-buttons">
+                    <form action="/dashboard">
+                        <button type="submit" class="btn btn-link">Dashboard</button>
+                    </form>
+                </div>
+            </div>
+        </header>
+        <div class="content">
+            <h2>For sale by {{listing.seller.first_name}} {{listing.seller.last_name}}</h2>
+            <ul class="car-info-list">
+                <li><strong>Make/Model: </strong>{{listing.make_model}}</li>
+                <li><strong>Year: </strong>{{listing.year}}</li>
+                <li><strong>Condition: </strong>{{listing.condition}}</li>
+                <li><strong>Price:  </strong> ${{listing.price}}0</li>
+                <li><strong>Mileage: </strong>{{listing.mileage}}</li>
+                <li><strong>Description: </strong>{{listing.description}}</li>
+            </ul>
+        </div>
+        {% if listing.user_id == user.id %}
+            <div class="button-container">
+                <form action="/listings/edit/{{listing.id}}">
+                    <button type="submit" class="edit-button">Edit listing</button>
+                </form>
+                <form action="/listings/delete/{{listing.id}}">
+                    <button type="submit" class="delete-button">Delete listing</button>
+                </form>
+            </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>

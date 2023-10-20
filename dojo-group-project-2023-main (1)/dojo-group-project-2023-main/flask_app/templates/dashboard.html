@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/css/dashboard.css">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}"> -->
+    <title>Dashboard</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header">
+                <div class="h1">
+                    <h1>Dashboard</h1>
+                </div>
+                <div class="header-buttons">
+                    <form action="/user/logout">
+                        <button type="submit" class="logout-button">Log out</button>
+                    </form>
+                </div>
+            </div>
+        </header>
+        <div class="content">
+            <h2>Welcome {{user.first_name}} {{user.last_name}}!</h2>
+            <table class="car-table">
+                <caption>Cars for sale</caption>
+                <thead>
+                    <tr>
+                        <th>Make/Model</th>
+                        <th>Year</th>
+                        <th>Condition</th>
+                        <th>Seller</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for one_listing in all_listings %}
+                    <tr>
+                        <td><a class="listing-link" href="/listings/show/{{ one_listing.id }}">{{
+                                one_listing.make_model }}</a></td>
+                        <td>{{ one_listing.year}}</td>
+                        <td>{{ one_listing.condition}}</td>
+                        <td>{{ one_listing.seller.first_name }} {{ one_listing.seller.last_name }}</td>
+                        <td>$ {{ one_listing.price}}0</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="create-listing-button">
+            <form action="/listings/new">
+                <button type="submit" class="btn btn-link">Create listing</button>
+            </form>
+        </div>
+        <!-- <div class="comments-section">
+                <h2>Comments</h2>
+                <ul class="comment-list">
+                    <li>Comment 1</li>
+                    <h2>Comments</h2>
+                    </form>
+            </div> -->
+</body>
+
+</html>
